@@ -16,6 +16,8 @@ string getRandomAnswer(vector < pair<string, vector<string> > >& result, int ind
 }
 string name;
 string age;
+string occupation;
+string moodAtWork;
 
 int main()
 {
@@ -39,36 +41,42 @@ int main()
 	//	}
 	//}
 	bool botTurn = false;
-
+	int whoToAsk = 0;
 	while (1)
 	{
-		std::cout << "USER:";
-		std::string textFromUser;
-		std::getline(std::cin, textFromUser);
 		bool answerIsGiven{ false };
 
+		if (!whoToAsk) {
+			std::cout << "USER:";
+			std::string textFromUser;
+			std::getline(std::cin, textFromUser);
 
-		std::transform(textFromUser.begin(), textFromUser.end(), textFromUser.begin(), ::toupper);
+
+			std::transform(textFromUser.begin(), textFromUser.end(), textFromUser.begin(), ::toupper);
 
 
-		for (int i = 0; i < user.size(); ++i)
-		{
-			if (isMatching(user[i].first, textFromUser))
+			for (int i = 0; i < user.size(); ++i)
 			{
-				answerIsGiven = true;
-				cout << "BOT:" << getRandomAnswer(user, i) << "\n";
-				break;
+				if (isMatching(user[i].first, textFromUser))
+				{
+					answerIsGiven = true;
+					cout << "BOT:" << getRandomAnswer(user, i) << "\n";
+					break;
+				}
 			}
+			whoToAsk++;
 		}
-		
 
 		if (!answerIsGiven)
 		{
 			cout << "BOT:" << "I DON'T UNDERSTANT!\n";
+		}
+
+		if (whoToAsk) {
 			srand(time(nullptr));
 			int nr = rand() % bot.size();
 
-			cout << "BOT:" << getRandomAnswer(bot, nr)<<"\n";
+			cout << "BOT:" << getRandomAnswer(bot, nr) << "\n";
 			std::string textFromUser;
 			std::cout << "USER:";
 			std::getline(std::cin, textFromUser);
@@ -85,6 +93,17 @@ int main()
 			{
 				age = answer;
 			}
+
+			if (scopes[bot[nr].first] == "occupation")
+			{
+				occupation = answer;
+			}
+
+			if (scopes[bot[nr].first] == "occupationMood")
+			{
+				moodAtWork = answer;
+			}
+			whoToAsk = 0;
 		}
 	}
 		

@@ -108,6 +108,16 @@ std::string getAnswer(string wildCard, string text, string scope)
 		return what[4];
 	}
 
+	if (scope == "occupation")
+	{
+		return what[5];
+	}
+
+	if (scope == "occupationMood")
+	{
+		return what[0];
+	}
+
 	return "none";
 }
 

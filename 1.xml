@@ -41,9 +41,30 @@
       <li>How your friends are calling you?</li>
       <li>How can I call you ?</li>
       <li>My name is Bot, what is your name?</li>
-
     </template>
   </category>
 
+  <category>
+    <type>bot</type>
+    <scope>occupation</scope>
+    <pattern>((I am working as a)|(I am)|(I am a))[ ]+([A-Za-z]+)</pattern>
+    <template>
+      <li>What is your occupation?</li>
+      <li>What are you working?</li>
+      <li>What is your job?</li>
+    </template>
+  </category>
+
+  <category>
+    <type>bot</type>
+    <scope>occupationMood</scope>
+    <pattern>((Cool)|(Amazing)|(bad)|(Not Cool)|(Booring))</pattern>
+    <template>
+      <li>How is going at work?</li>
+      <li>How is the work?</li>
+      <li>What is your mood at work?</li>
+    </template>
+  </category>
+  
 
 </aiml>
