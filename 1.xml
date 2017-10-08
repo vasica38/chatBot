@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<aiml version = "1.0.1" encoding = "UTF-8" >
+  <category>
+    <type>user</type>
+    <scope>none</scope>
+    <pattern>((HELLO)|(HI)|(CIAO))[ ]?[A-Za-z]*</pattern>
+    <template>
+      <li>Hi</li>
+      <li>Good Day</li>
+    </template>
+  </category>
+  
+  <category>
+    <type>user</type>
+    <scope>none</scope>
+    <pattern>(HOW OLD ARE YOU)[?]*</pattern>
+    <template>
+      <li>A few seconds, you?</li>
+      <li>I don't know, how old are you?</li>
+      <li>Mhh, it is a secret, how old are you?</li>
+    </template>
+  </category>
+
+  <category>
+    <type>bot</type>
+    <scope>age</scope>
+    <pattern>((I am)?)[ ]+(([0-9])+)[ ]+((years old)?)</pattern>
+    <template>
+      <li>How old are you?</li>
+      <li>How old are you turning this year?</li>
+      <li>If you are fine, what is your age?</li>
+    </template>
+  </category>
+
+  <category>
+    <type>bot</type>
+    <scope>name</scope>
+    <pattern>((My name is)|(I am))[ ]+([A-Za-z]+)</pattern>
+    <template>
+      <li>What is your name?</li>
+      <li>How your friends are calling you?</li>
+      <li>How can I call you ?</li>
+      <li>My name is Bot, what is your name?</li>
+
+    </template>
+  </category>
+
+
+</aiml>
