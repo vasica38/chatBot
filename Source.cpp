@@ -14,16 +14,47 @@ string getRandomAnswer(vector < pair<string, vector<string> > >& result, int ind
 
 	return result[index].second[random];
 }
+
+void save(string name, string age, string occupation, string moodAtWork)
+{
+	ofstream f("save.xml");
+	f << "<name>" << name << "</name>\n";
+	f << "<age>" << age << "</age>\n";
+	f << "<occupation>" << occupation << "</occupation>\n";
+	f << "<moodAtWork>" << moodAtWork << "</moodAtWork>\n";
+
+	f.close();
+}
+
 string name;
 string age;
 string occupation;
 string moodAtWork;
 
+bool nameIsSet = false;
+bool ageIsSet = false;
+bool occupationIsSet = false;
+bool moodAtWorkIsSet = false;
+
+
+string personalizeMessageName(string s)
+{
+	if (s[0] != '#') return s;
+	string result = s;
+	if (nameIsSet) {
+		result.erase(result.begin(), result.begin() + 1);
+		return name + result;
+	}
+	else
+	{
+		result.erase(result.begin(), result.begin() + 2);
+		return result;
+	}
+}
+
+
 int main()
 {
-	std::vector<int> lol{ 1,2,3,4 };
-	//std::cout << boost::algorithm::is_sorted(lol);
-
 	std::string filename("1.xml");
 	vector < pair<string, vector<string> > > bot;
 	vector < pair<string, vector<string> > > user;
@@ -60,7 +91,7 @@ int main()
 				if (isMatching(user[i].first, textFromUser))
 				{
 					answerIsGiven = true;
-					cout << "BOT:" << getRandomAnswer(user, i) << "\n";
+					cout << "BOT:" << personalizeMessageName(getRandomAnswer(user, i)) << "\n";
 					break;
 				}
 			}
@@ -76,32 +107,45 @@ int main()
 			srand(time(nullptr));
 			int nr = rand() % bot.size();
 
-			cout << "BOT:" << getRandomAnswer(bot, nr) << "\n";
+			cout << "BOT:" << personalizeMessageName(getRandomAnswer(bot, nr)) << "\n";
 			std::string textFromUser;
 			std::cout << "USER:";
 			std::getline(std::cin, textFromUser);
 			string answer = getAnswer(bot[nr].first, textFromUser, scopes[bot[nr].first]);
+
+			for (int i = 0; i < user.size(); ++i)
+			{
+				if (isMatching(user[i].first, textFromUser))
+				{
+					cout << "BOT:" << personalizeMessageName(getRandomAnswer(user, i)) << "\n";
+					break;
+				}
+			}
 
 			if (answer == "none") continue;
 
 			if (scopes[bot[nr].first] == "name")
 			{
 				name = answer;
+				nameIsSet = true;
 			}
 
 			if (scopes[bot[nr].first] == "age")
 			{
 				age = answer;
+				ageIsSet = true;
 			}
 
 			if (scopes[bot[nr].first] == "occupation")
 			{
 				occupation = answer;
+				occupationIsSet = true;
 			}
 
 			if (scopes[bot[nr].first] == "occupationMood")
 			{
 				moodAtWork = answer;
+				moodAtWorkIsSet = true;
 			}
 			whoToAsk = 0;
 		}

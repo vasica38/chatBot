@@ -13,29 +13,120 @@
   <category>
     <type>user</type>
     <scope>none</scope>
+    <pattern>(HOW ARE YOU)[? ]?[A-Za-z]*</pattern>
+    <template>
+      <li>I am fine!</li>
+      <li>I am very good!</li>
+      <li>I never have been better</li>
+    </template>
+  </category>
+  
+ <category>
+    <type>user</type>
+    <scope>none</scope>
+    <pattern>(TELL ME A JOKE)[? ]?[A-Za-z]*</pattern>
+    <template>
+      <li>Time flies like an arrow, fruit flies like a banana.</li>
+      <li>What's the difference between my ex and the titanic? The titanic only went down on 1,000 people.</li>
+      <li>Rick Astley will let you borrow any movie from his Pixar collection, except one. He's never gonna give you up.</li>
+    </template>
+  </category>
+  
+  <category>
+    <type>user</type>
+    <scope>none</scope>
+    <pattern>(HOW IS THE WEATHER)[? ]?[A-Za-z]*</pattern>
+    <template>
+      <li>It is cold</li>
+      <li>I guees it will rain</li>
+      <li>It is a big chance of raining</li>
+    </template>
+  </category>
+  
+  
+  <category>
+    <type>user</type>
+    <scope>none</scope>
     <pattern>(HOW OLD ARE YOU)[?]*</pattern>
     <template>
-      <li>A few seconds, you?</li>
-      <li>I don't know, how old are you?</li>
-      <li>Mhh, it is a secret, how old are you?</li>
+      <li>A few seconds</li>
+      <li>I don't know</li>
+      <li>Mhh, it is a secret</li>
     </template>
   </category>
 
   <category>
     <type>bot</type>
     <scope>age</scope>
-    <pattern>((I am)?)[ ]+(([0-9])+)[ ]+((years old)?)</pattern>
+    <pattern>(I am)?[ ]?(([0-9])+)[ ]?(years old)?</pattern>
     <template>
-      <li>How old are you?</li>
-      <li>How old are you turning this year?</li>
-      <li>If you are fine, what is your age?</li>
+      <li>#, How old are you?</li>
+      <li>#, How old are you turning this year?</li>
+      <li>#, If you are fine, what is your age?</li>
+    </template>
+  </category>
+  
+  <category>
+    <type>user</type>
+    <scope></scope>
+    <pattern>(((I am a)?[ ]?)?)((SWD)|(Software Developer)|(Programmer))</pattern>
+    <template>
+      <li>#, Wow, soo coooool</li>
+      <li>#, it is amazing :)</li>
+      <li>#, best job ever</li>
     </template>
   </category>
 
   <category>
+    <type>user</type>
+    <scope></scope>
+    <pattern>(((I am a)?[ ]?)?)([2][0-9]+)</pattern>
+    <template>
+      <li>#, Wow, you are young!</li>
+      <li>#, I guees you are going to university</li>
+      <li>#, it is best part of life</li>
+    </template>
+  </category>
+
+  <category>
+    <type>user</type>
+    <scope></scope>
+    <pattern>(((I am a)?[ ]?)?)([1][0-7]+)</pattern>
+    <template>
+      <li>#, You are teen!</li>
+      <li>#, you are high school student</li>
+      <li>#, high scool is best part of life. </li>
+    </template>
+  </category>
+
+  <category>
+    <type>user</type>
+    <scope></scope>
+    <pattern>(((I am a)?[ ]?)?)([5-9][0-9]+)</pattern>
+    <template>
+      <li>#, You are old men!</li>
+      <li>#, you must be a grandparent!</li>
+      <li>#, I guees you are retired!</li>
+    </template>
+  </category>
+
+
+  <category>
+    <type>user</type>
+    <scope></scope>
+    <pattern>(((I am a)?[ ]?)?)([3-4][0-9]+)</pattern>
+    <template>
+      <li>#, YOu have children!!</li>
+      <li>#, I guees you are married!</li>
+      <li>#, I guees you love your job !</li>
+    </template>
+  </category>
+
+
+  <category>
     <type>bot</type>
     <scope>name</scope>
-    <pattern>((My name is)|(I am))[ ]+([A-Za-z]+)</pattern>
+    <pattern>((My name is)|(I am))?[ ]?([A-Za-z]+)</pattern>
     <template>
       <li>What is your name?</li>
       <li>How your friends are calling you?</li>
@@ -47,11 +138,11 @@
   <category>
     <type>bot</type>
     <scope>occupation</scope>
-    <pattern>((I am working as a)|(I am)|(I am a))[ ]+([A-Za-z]+)</pattern>
+    <pattern>((I am working as a)|(I am))?[ ]?([A-Za-z]+)</pattern>
     <template>
-      <li>What is your occupation?</li>
-      <li>What are you working?</li>
-      <li>What is your job?</li>
+      <li>#, What is your occupation?</li>
+      <li>#, What are you working?</li>
+      <li>#, What is your job?</li>
     </template>
   </category>
 
@@ -60,9 +151,9 @@
     <scope>occupationMood</scope>
     <pattern>((Cool)|(Amazing)|(bad)|(Not Cool)|(Booring))</pattern>
     <template>
-      <li>How is going at work?</li>
-      <li>How is the work?</li>
-      <li>What is your mood at work?</li>
+      <li>#, How is going at work?</li>
+      <li>#, How is the work?</li>
+      <li>#, What is your mood at work?</li>
     </template>
   </category>
   

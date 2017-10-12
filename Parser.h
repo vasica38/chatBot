@@ -100,7 +100,7 @@ std::string getAnswer(string wildCard, string text, string scope)
 
 	if (scope == "age")
 	{
-		return what[3];
+		return what[2];
 	}
 
 	if (scope == "name")
@@ -110,7 +110,7 @@ std::string getAnswer(string wildCard, string text, string scope)
 
 	if (scope == "occupation")
 	{
-		return what[5];
+		return what[4];
 	}
 
 	if (scope == "occupationMood")
